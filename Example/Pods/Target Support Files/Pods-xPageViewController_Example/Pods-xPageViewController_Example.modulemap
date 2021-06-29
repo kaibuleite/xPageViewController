@@ -1,0 +1,6 @@
+framework module Pods_xPageViewController_Example {
+  umbrella header "Pods-xPageViewController_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

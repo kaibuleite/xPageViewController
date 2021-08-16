@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xPageViewController'
-  s.version          = '1.0.0'
+  s.version          = '1.0.2'
   s.summary          = 'Swift xPageViewController.'
+  s.swift_version    = '5'      # Swift版本号
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -41,4 +42,5 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   s.dependency 'xExtension'
   s.dependency 'xWebImage'
+  
 end

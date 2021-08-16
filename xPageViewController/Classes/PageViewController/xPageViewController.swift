@@ -232,7 +232,7 @@ public class xPageViewController: UIPageViewController {
             guard ws.itemViewControllerArray.count > 0 else { return }
             ws.change(to: ws.currentPage + 1)
         }
-        RunLoop.main.add(timer, forMode: .commonModes)
+        RunLoop.main.add(timer, forMode: .common)
         self.timer = timer
     }
     /// 关闭定时器

@@ -2,16 +2,16 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - xDefine (1.0.2)
-  - xExtension (1.0.8):
+  - xDefine (1.0.4)
+  - xExtension (1.1.1):
     - xDefine
-  - xKit (1.0.5):
+  - xKit (1.0.6):
     - xDefine
     - xExtension
   - xPageViewController (1.0.0):
     - xExtension
     - xWebImage
-  - xWebImage (1.0.2):
+  - xWebImage (1.0.3):
     - SDWebImage
     - xExtension
     - xKit
@@ -34,11 +34,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  xDefine: 0df7b51c0e6edb71ca9fd667f728699d0a7a1b12
-  xExtension: f53765a72cdb40b8dd8106f37c426d7b4084ba05
-  xKit: bfae7a5e09e7e462ab93b29549c28f3eef5b2631
+  xDefine: ca6c6eef825544db8b43409e66dbff05eca7ac58
+  xExtension: 70d1f6b92b268f1e36236f8be26ed86c72628a0b
+  xKit: 60f95439ecf0de4fa575b51801274be297f5bdb2
   xPageViewController: daa892330ea79cc00c5ed285c3de3d2be5b6dab0
-  xWebImage: 99a1053ea8d5e7d3e00c7df6b7e833f5f3660b7e
+  xWebImage: a60d0cf7b0121240c61b0feddb206b56174f4c22
 
 PODFILE CHECKSUM: fe9fc8fb20e46b8ffaffc8341a7f9b52abfe4f21
 

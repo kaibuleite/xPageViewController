@@ -209,14 +209,15 @@ public class xPageViewController: UIPageViewController {
         if page < self.currentPage {
             direction = .reverse
         }
-        self.currentPage = self.safe(page: page)
+        let safePage = self.safe(page: page)    // 需要新声明参数
+        self.currentPage = safePage
         let vc = self.itemViewControllerArray[self.currentPage]
         self.view.isUserInteractionEnabled = false
         self.setViewControllers([vc], direction: direction, animated: animated) {
             [unowned self] (finish) in
             // print("系统换页完成")
             self.view.isUserInteractionEnabled = true
-            self.changeHandler?(self.currentPage)
+            self.changeHandler?(safePage)   // 不要用self.currentPage,不然堆内的数据还是原来的
         }
     }
     

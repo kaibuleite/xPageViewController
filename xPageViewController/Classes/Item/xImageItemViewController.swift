@@ -32,10 +32,13 @@ class xImageItemViewController: UIViewController {
         let vc = xImageItemViewController.init(nibName: "xImageItemViewController", bundle: bundle)
         return vc as! Self
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .clear
     }
-    override func addKit() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let img = self.locImage {
             self.imgIcon.image = img
         }

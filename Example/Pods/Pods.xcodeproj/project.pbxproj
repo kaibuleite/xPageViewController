@@ -950,8 +950,8 @@
 		8D0E4F89454B38E43A881B07AFDA316F /* PageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D7C64311F642F1BF9B9C67A5361BB59E /* xPageViewController.storyboard */,
 				09D7879409B592146F69CFD2BB0D649E /* xPageViewController.swift */,
+				D7C64311F642F1BF9B9C67A5361BB59E /* xPageViewController.storyboard */,
 			);
 			name = PageViewController;
 			path = xPageViewController/Classes/PageViewController;

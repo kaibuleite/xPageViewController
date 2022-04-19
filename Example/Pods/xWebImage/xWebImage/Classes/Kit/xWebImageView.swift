@@ -23,8 +23,13 @@ open class xWebImageView: xImageView {
     /// 加载网络图片
     public func xSetWebImage(url : String,
                              placeholderImage : UIImage? = xWebImageManager.shared.placeholderImage,
-                             completed : (() -> Void)? = nil)
+                             completed : ((UIImage?) -> Void)? = nil)
     {
+        guard url.count > 0 else {
+            print("⚠️ 图片URL为空,直接设置占位图")
+            self.image = placeholderImage
+            return
+        }
         var str = url
         if url.hasPrefix("http") == false {
             str = xWebImageManager.shared.webImageURLPrefix + url
@@ -35,7 +40,7 @@ open class xWebImageView: xImageView {
         self.webImageURL = str
         self.sd_setImage(with: str.xToURL(), placeholderImage: placeholderImage, options: .retryFailed) {
             (img, err, _, _) in
-            completed?()
+            completed?(img)
         }
     }
     

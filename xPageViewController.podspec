@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xPageViewController'
-  s.version          = '1.0.7'
+  s.version          = '1.0.8'
   s.summary          = 'Swift xPageViewController.'
   s.swift_version    = '5'      # Swift版本号
 
@@ -40,7 +40,7 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # SD框架太大，不用频繁更新
-  s.dependency 'SDWebImage', '~> 5.12.5'
+  #s.dependency 'SDWebImage', '~> 5.12.5'
   s.dependency 'xExtension'
   s.dependency 'xWebImage'
   

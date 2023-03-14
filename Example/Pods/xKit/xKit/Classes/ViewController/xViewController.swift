@@ -18,39 +18,38 @@ open class xViewController: UIViewController {
     /// 子控制器容器
     @IBOutlet open weak var childContainer: xContainerView?
     
-    // MARK: - IBInspectable Property
-    /// 控制器描述
-    @IBInspectable public var xTitle : String = ""
+    // MARK: - Override Property
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
     
     // MARK: - Public Property
     /// 是否显示中
     public var isAppear = false
     /// 是否完成数据加载(默认已完成)
-    public var isLoadRequestDataCompleted = true
-    /// 是否是根级父控制器
-    public var isRootParentViewController = false
+    public var isRequestDataCompleted = true
     /// 子控制器Key
     public var childViewControllerKeys = [String]()
     
     // MARK: - 内存释放
     deinit {
-        if self.isRootParentViewController {
-            print(">>>>> 释放视图控制器")
-        }
-        print("♻️ \(self.xClassInfoStruct.name)")
+        let info = self.xClassInfoStruct
+        let space = info.space
+        let name = info.name 
+        print("♻️【\(space).\(name)】")
     }
     
     // MARK: - Open Override Func
     open override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        // 模态全屏
+        self.modalPresentationStyle = .fullScreen
         // 强制白天模式
         if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
+            self.overrideUserInterfaceStyle = .light
         } else {
             // Fallback on earlier versions
         }
-        // 模态全屏
-        self.modalPresentationStyle = .fullScreen
         // 子控制器的Key
         self.childViewControllerKeys = ["Child", "child"]
         // 主线程初始化UI
@@ -67,9 +66,6 @@ open class xViewController: UIViewController {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.isAppear = false
-    }
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
     }
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

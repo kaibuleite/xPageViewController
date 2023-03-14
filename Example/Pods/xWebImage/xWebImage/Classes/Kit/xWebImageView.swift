@@ -15,8 +15,8 @@ open class xWebImageView: xImageView {
     public var webImageURL = ""
     
     // MARK: - Open Override Func
-    open override func viewDidLoad() {
-        super.viewDidLoad()
+    open override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     // MARK: - Public Func

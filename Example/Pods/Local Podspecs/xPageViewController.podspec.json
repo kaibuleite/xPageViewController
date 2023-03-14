@@ -1,6 +1,6 @@
 {
   "name": "xPageViewController",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "summary": "Swift xPageViewController.",
   "swift_versions": "5",
   "description": "TODO: Add long description of the pod here.",
@@ -14,13 +14,16 @@
   },
   "source": {
     "git": "https://github.com/kaibuleite/xPageViewController.git",
-    "tag": "1.0.4"
+    "tag": "1.0.7"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "12.0"
   },
   "source_files": "xPageViewController/Classes/**/*",
   "dependencies": {
+    "SDWebImage": [
+      "~> 5.12.5"
+    ],
     "xExtension": [
 
     ],

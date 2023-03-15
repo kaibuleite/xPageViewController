@@ -56,11 +56,19 @@ extension xPageViewController {
         }
         // 是否重复
         if list.count == 1, isRepeats {
-            list = [first, first, first]
+            // 视图控制器归档
+            if let data = try? NSKeyedArchiver.archivedData(withRootObject: first, requiringSecureCoding: false) {
+                // 还原拷贝
+                let copy1 = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIViewController.self, from: data)
+                let copy2 = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIViewController.self, from: data)
+                if let vc = copy1 { list.append(vc) }
+                if let vc = copy2 { list.append(vc) }
+            }
         }
         // 绑定数据
         self.currentPage = 0
         self.pendingPage = 0
+        self.totalPage = list.count
         self.itemArray = list
         self.contentScrollView?.isScrollEnabled = (list.count > 1)
         // 设置子控制器样式

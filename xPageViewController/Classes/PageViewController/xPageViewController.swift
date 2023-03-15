@@ -48,6 +48,8 @@ public class xPageViewController: UIPageViewController {
     public var isDragging = false
 
     // MARK: - Private Property
+    /// 总页数
+    public var totalPage = 0
     /// 当前页数编号
     var currentPage = 0
     /// 目标页数编号

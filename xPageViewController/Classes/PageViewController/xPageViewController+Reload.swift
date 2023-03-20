@@ -46,6 +46,7 @@ extension xPageViewController {
                        isRepeats : Bool = false)
     {
         var list = itemViewControllerArray
+        self.contentScrollView?.isScrollEnabled = false
         guard list.count > 0 else {
             print("⚠️ 数据不能为0")
             return
@@ -72,17 +73,20 @@ extension xPageViewController {
         self.itemArray = list
         self.contentScrollView?.isScrollEnabled = (list.count > 1)
         // 设置子控制器样式
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
         for (i, vc) in itemViewControllerArray.enumerated()  {
             vc.view.tag = i
+            vc.view.frame = self.view.bounds
             // 没有单击事件回调就不用添加手势了
             guard self.clickHandler != nil else { continue }
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             vc.view.addGestureRecognizer(tap)
         }
-        self.setViewControllers([first], direction: .forward, animated: false) {
-            (finish) in
-        }
+        self.setViewControllers([first], direction: .forward, animated: false)
+        guard self.isOpenAutoChangeTimer else { return }
+        self.openTimer()
     }
     /// 手势事件
     @objc func tapItem(_ gesture : UITapGestureRecognizer)
@@ -90,4 +94,5 @@ extension xPageViewController {
         guard let page = gesture.view?.tag else { return }
         self.clickHandler?(page)
     }
+    
 }

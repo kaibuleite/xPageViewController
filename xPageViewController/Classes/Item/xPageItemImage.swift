@@ -11,16 +11,11 @@ import xWebImage
 
 open class xPageItemImage: UIViewController {
     
-    // MARK: - Handler
-    /// 切换页数
-    public typealias xHandlerSetImageCompleted = (UIImage?) -> Void
-    
     // MARK: - IBOutlet Property
     /// 图片
     @IBOutlet weak var imgIcon: xWebImageView!
 
     // MARK: - Public Property
-    var setImageHandler : xHandlerSetImageCompleted?
     /// 网络图片
     var webImage = ""
     /// 本地图片
@@ -28,8 +23,6 @@ open class xPageItemImage: UIViewController {
     
     // MARK: - 内存释放
     deinit {
-        self.setImageHandler = nil
-        
         let info = self.xClassInfoStruct
         let space = info.space
         let name = info.name
@@ -61,20 +54,14 @@ open class xPageItemImage: UIViewController {
         super.viewWillAppear(animated)
         if let img = self.locImage {
             self.imgIcon.image = img
-            self.setImageHandler?(img)
         } else {
             self.imgIcon.xSetWebImage(url: self.webImage) {
                 [weak self] (img) in
                 guard let self = self else { return }
-                self.setImageHandler?(img)
+                self.locImage = img
+                self.imgIcon.image = img
             }
         }
     }
-
-    // MARK: - 添加回调
-    /// 添加回调
-    public func addSetImageCompleted(_ handler : @escaping xPageItemImage.xHandlerSetImageCompleted)
-    {
-        self.setImageHandler = handler
-    }
+    
 }

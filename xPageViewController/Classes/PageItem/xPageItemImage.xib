@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="xPageItemImage" customModule="xPageViewController" customModuleProvider="target">
             <connections>
-                <outlet property="imgIcon" destination="Z2T-Oe-Sw1" id="zcd-6q-o2F"/>
+                <outlet property="refreshingView" destination="4Ic-QK-Kke" id="odg-1j-xBq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,18 +20,13 @@
             <rect key="frame" x="0.0" y="0.0" width="427" height="245"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z2T-Oe-Sw1" customClass="xWebImageView" customModule="xWebImage">
-                    <rect key="frame" x="0.0" y="0.0" width="427" height="245"/>
-                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4Ic-QK-Kke">
+                    <rect key="frame" x="195" y="104" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="Z2T-Oe-Sw1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3bQ-vb-U3z"/>
-                <constraint firstItem="Z2T-Oe-Sw1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3nQ-H1-Fgp"/>
-                <constraint firstItem="Z2T-Oe-Sw1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WKB-Lo-4Kj"/>
-                <constraint firstItem="Z2T-Oe-Sw1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xdj-nz-zgp"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="141.30434782608697" y="-88.058035714285708"/>
         </view>

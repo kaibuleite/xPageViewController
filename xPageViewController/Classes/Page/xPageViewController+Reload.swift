@@ -10,34 +10,6 @@ import Foundation
 extension xPageViewController {
     
     // MARK: - 数据加载
-    /// 加载网络图片
-    /// - Parameters:
-    ///   - webImageArray: 图片链接
-    public func reload(webImageArray : [String],
-                       isRepeats : Bool = false)
-    {
-        var vcArray = [UIViewController]()
-        for url in webImageArray {
-            let vc = xPageItemImage.xDefaultViewController(webImage: url)
-            vcArray.append(vc)
-        }
-        self.reload(itemViewControllerArray: vcArray,
-                    isRepeats: isRepeats)
-    }
-    /// 加载本地图片
-    /// - Parameters:
-    ///   - locImageArray: 本地图片
-    public func reload(locImageArray : [UIImage],
-                       isRepeats : Bool = false)
-    {
-        var vcArray = [UIViewController]()
-        for img in locImageArray {
-            let vc = xPageItemImage.xDefaultViewController(locImage: img)
-            vcArray.append(vc)
-        }
-        self.reload(itemViewControllerArray: vcArray,
-                    isRepeats : isRepeats)
-    }
     /// 加载自定义组件数据
     /// - Parameters:
     ///   - itemViewControllerArray: 视图控制器列表
@@ -69,8 +41,8 @@ extension xPageViewController {
         // 绑定数据
         self.currentPage = 0
         self.pendingPage = 0
+        self.dataArray = list
         self.totalPage = list.count
-        self.itemArray = list
         self.contentScrollView?.isScrollEnabled = (list.count > 1)
         // 设置子控制器样式
         self.view.setNeedsLayout()
@@ -85,7 +57,6 @@ extension xPageViewController {
             vc.view.addGestureRecognizer(tap)
         }
         self.setViewControllers([first], direction: .forward, animated: false)
-        guard self.isOpenAutoChangeTimer else { return }
         self.openTimer()
     }
     /// 手势事件
@@ -93,6 +64,34 @@ extension xPageViewController {
     {
         guard let page = gesture.view?.tag else { return }
         self.clickHandler?(page)
+    }
+    /// 加载网络图片
+    /// - Parameters:
+    ///   - webImageArray: 图片链接
+    public func reload(webImageArray : [String],
+                       isRepeats : Bool = false)
+    {
+        var vcArray = [UIViewController]()
+        for url in webImageArray {
+            let vc = xPageItemImage.xDefaultViewController(webImage: url)
+            vcArray.append(vc)
+        }
+        self.reload(itemViewControllerArray: vcArray,
+                    isRepeats: isRepeats)
+    }
+    /// 加载本地图片
+    /// - Parameters:
+    ///   - locImageArray: 本地图片
+    public func reload(locImageArray : [UIImage],
+                       isRepeats : Bool = false)
+    {
+        var vcArray = [UIViewController]()
+        for img in locImageArray {
+            let vc = xPageItemImage.xDefaultViewController(locImage: img)
+            vcArray.append(vc)
+        }
+        self.reload(itemViewControllerArray: vcArray,
+                    isRepeats : isRepeats)
     }
     
 }

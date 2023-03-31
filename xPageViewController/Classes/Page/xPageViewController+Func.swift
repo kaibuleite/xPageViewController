@@ -9,19 +9,19 @@ import Foundation
 
 extension xPageViewController {
     
-    // MARK: - 页码
-    /// 校验页码
-    func checkPageSafe(_ page : Int) -> Int
+    
+    // MARK: - 添加回调
+    public func addScrollingPage(_ handler : @escaping xPageViewController.xHandlerScrolling)
     {
-        let count = self.itemArray.count
-        guard count > 0 else { return 0 }
-        if page >= count {
-            return 0
-        }
-        if page < 0 {
-            return count - 1
-        }
-        return page
+        self.scrollingHandler = handler
+    }
+    public func addChangePage(_ handler : @escaping xPageViewController.xHandlerChangePage)
+    {
+        self.changeHandler = handler
+    }
+    public func addClickPage(_ handler : @escaping xPageViewController.xHandlerClickPage)
+    {
+        self.clickHandler = handler
     }
     
     // MARK: - 换页
@@ -32,7 +32,7 @@ extension xPageViewController {
         // print("系统换页")
         guard page != self.currentPage else { return }
         let safePage = self.checkPageSafe(page)
-        guard let vc = self.itemArray.xObject(at: safePage) else { return }
+        guard let vc = self.dataArray.xObject(at: safePage) else { return }
         self.currentPage = safePage
         // 获取滚动方向
         var direction = UIPageViewController.NavigationDirection.forward
@@ -48,6 +48,21 @@ extension xPageViewController {
             self.view.isUserInteractionEnabled = true
             self.changeHandler?(safePage)   // 不要用self.currentPage,不然堆内的数据还是原来的
         }
+    }
+    
+    // MARK: - 页码
+    /// 校验页码
+    func checkPageSafe(_ page : Int) -> Int
+    {
+        let count = self.dataArray.count
+        guard count > 0 else { return 0 }
+        if page >= count {
+            return 0
+        }
+        if page < 0 {
+            return count - 1
+        }
+        return page
     }
     
 }

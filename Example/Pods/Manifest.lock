@@ -8,7 +8,7 @@ PODS:
   - xKit (1.2.6):
     - xDefine
     - xExtension
-  - xPageViewController (1.0.8):
+  - xPageViewController (1.1.1):
     - xExtension
     - xWebImage
   - xWebImage (1.0.6):
@@ -37,7 +37,7 @@ SPEC CHECKSUMS:
   xDefine: 4d633701f2ee5ed5112c4be111ff0c43d49fb85d
   xExtension: e16722c182803877ad521708735205905c364631
   xKit: b14287a9438d96503b854cae1ab101369d35c708
-  xPageViewController: 224dcde0cb087cce8ccf3752222cbf63e3823f59
+  xPageViewController: 9815e4dfc8bbab4f8e54829f85484f37e740fd70
   xWebImage: edd31a022085daee0506542a99cf1d98f41968f7
 
 PODFILE CHECKSUM: 7783755b769f2a04b10dddaf55bc24544ab231cf

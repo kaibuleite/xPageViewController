@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="xPageItemPreviewPictures" customModule="xPageViewController" customModuleProvider="target">
+            <connections>
+                <outlet property="contentScroll" destination="H4v-hH-ZCt" id="qr7-7F-WLt"/>
+                <outlet property="refreshingView" destination="LMB-uD-0lM" id="J3b-Vd-JEn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="293" height="292"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4v-hH-ZCt">
+                    <rect key="frame" x="0.0" y="0.0" width="293" height="292"/>
+                </scrollView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LMB-uD-0lM">
+                    <rect key="frame" x="128" y="127.5" width="37" height="37"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="LMB-uD-0lM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1kP-Hh-FeS"/>
+                <constraint firstItem="LMB-uD-0lM" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4sb-zw-rBs"/>
+                <constraint firstItem="LMB-uD-0lM" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="N5i-lQ-Uk6"/>
+                <constraint firstItem="H4v-hH-ZCt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qdd-pi-kf3"/>
+                <constraint firstAttribute="bottom" secondItem="H4v-hH-ZCt" secondAttribute="bottom" id="ghN-2d-IYr"/>
+                <constraint firstItem="H4v-hH-ZCt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tUs-OF-ivR"/>
+                <constraint firstAttribute="trailing" secondItem="H4v-hH-ZCt" secondAttribute="trailing" id="yQK-EK-uYI"/>
+                <constraint firstItem="LMB-uD-0lM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yoX-e5-na2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="199.27536231884059" y="-114.50892857142857"/>
+        </view>
+    </objects>
+</document>

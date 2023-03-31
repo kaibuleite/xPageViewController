@@ -17,7 +17,7 @@ extension xPageViewController: UIPageViewControllerDataSource {
         // print("上一页")
         let page = viewController.view.tag - 1
         let safePage = self.checkPageSafe(page)
-        let vc = self.itemArray.xObject(at: safePage)
+        let vc = self.dataArray.xObject(at: safePage)
         return vc
     }
     public func pageViewController(_ pageViewController: UIPageViewController,
@@ -26,7 +26,7 @@ extension xPageViewController: UIPageViewControllerDataSource {
         // print("下一页")
         let page = viewController.view.tag + 1
         let safePage = self.checkPageSafe(page)
-        let vc = self.itemArray.xObject(at: safePage)
+        let vc = self.dataArray.xObject(at: safePage)
         return vc
     }
 }
@@ -51,9 +51,7 @@ extension xPageViewController: UIPageViewControllerDelegate {
                                    transitionCompleted completed: Bool)
     {
         // print("用户换页完成")
-        if self.isOpenAutoChangeTimer {
-            self.openTimer()
-        }
+        self.openTimer()
         guard finished else {
             print("⚠️ 换页事件未结束，中断")
             return
@@ -70,17 +68,20 @@ extension xPageViewController: UIPageViewControllerDelegate {
 // MARK: - UIScrollViewDelegate
 extension xPageViewController: UIScrollViewDelegate {
     
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+    {
         self.isDragging = true
     }
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView,
+                                         willDecelerate decelerate: Bool)
+    {
         self.isDragging = false
     }
     public func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         // 计算当前页的偏移量
-        guard self.itemArray.count > 0 else { return }
-        guard let vc = self.itemArray.xObject(at: self.currentPage) else { return }
+        guard self.dataArray.count > 0 else { return }
+        guard let vc = self.dataArray.xObject(at: self.currentPage) else { return }
         let p = vc.view.convert(CGPoint(), to: self.view)
         var direction = xDraggingDirection.next
         var page = self.currentPage
@@ -110,7 +111,8 @@ extension xPageViewController: UIScrollViewDelegate {
                                       progress: progress)
         handler(data, direction)
     }
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
         // 滚动结束
         // print(self.currentPage)
         self.changeHandler?(self.currentPage)

@@ -14,11 +14,15 @@ extension xPageViewController {
     /// 开启定时器
     public func openTimer()
     {
+        guard self.isOpenAutoChangeTimer else { return }
         self.closeTimer()   // 防止定时器多开
         let timer = Timer.xNew(timeInterval: self.changeInterval, repeats: true) {
             [weak self] (sender) in
             guard let self = self else { return }
-            guard self.itemArray.count > 0 else { return }
+            guard self.dataArray.count > 0 else {
+                self.closeTimer()
+                return
+            }
             let newPage = self.currentPage + 1
             self.changePage(to: newPage)
         }

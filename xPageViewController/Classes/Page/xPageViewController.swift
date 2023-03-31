@@ -38,6 +38,15 @@ public class xPageViewController: UIPageViewController {
     public typealias xHandlerClickPage = (Int) -> Void
     
     // MARK: - Public Property
+    /// 数据源
+    public var dataArray = [UIViewController]()
+    /// 总页数
+    public var totalPage = 0
+    /// 当前页数编号
+    public var currentPage = 0
+    /// 目标页数编号
+    public var pendingPage = 0
+    
     /// 刷新频率(默认5s)
     public var changeInterval = TimeInterval(5)
     /// 是否开启定时器
@@ -48,18 +57,10 @@ public class xPageViewController: UIPageViewController {
     public var isDragging = false
 
     // MARK: - Private Property
-    /// 总页数
-    public var totalPage = 0
-    /// 当前页数编号
-    var currentPage = 0
-    /// 目标页数编号
-    var pendingPage = 0
     /// 定时器
     var timer : Timer?
     /// 滚动容器
     var contentScrollView : UIScrollView?
-    /// 单页子控制器
-    var itemArray = [UIViewController]()
     /// 滚动回调
     var scrollingHandler : xHandlerScrolling?
     /// 切换回调
@@ -116,26 +117,11 @@ public class xPageViewController: UIPageViewController {
     }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard self.isOpenAutoChangeTimer else { return }
         self.openTimer()
     }
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.closeTimer()
-    }
-    
-    // MARK: - 添加回调
-    public func addScrollingPage(_ handler : @escaping xPageViewController.xHandlerScrolling)
-    {
-        self.scrollingHandler = handler
-    }
-    public func addChangePage(_ handler : @escaping xPageViewController.xHandlerChangePage)
-    {
-        self.changeHandler = handler
-    }
-    public func addClickPage(_ handler : @escaping xPageViewController.xHandlerClickPage)
-    {
-        self.clickHandler = handler
     }
     
 }

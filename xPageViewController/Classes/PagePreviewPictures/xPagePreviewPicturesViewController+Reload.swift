@@ -5,6 +5,7 @@
 //  Created by Mac on 2023/3/30.
 //
 
+import Foundation
 import xKit
 
 extension xPagePreviewPicturesViewController {
@@ -17,16 +18,12 @@ extension xPagePreviewPicturesViewController {
                        select row : Int = 0,
                        isRepeats : Bool = false)
     {
-        self.topNaviBar?.title = "\(row + 1)/\(webImageArray.count)"
-        var list = [xPageItemPreviewPictures]()
+        var list = [xPageItemPreviewPicture]()
         for url in webImageArray {
-            let item = xPageItemPreviewPictures.xDefaultViewController(webImage: url)
+            let item = xPageItemPreviewPicture.xDefaultViewController(webImage: url)
             list.append(item)
         }
-        self.childPage.reload(itemViewControllerArray: list,
-                              isRepeats: isRepeats)
-        guard row < list.count else { return }
-        self.childPage.changePage(to: row, animated: false)
+        self.reload(pictures: list, select: row, isRepeats: isRepeats)
     }
     /// 加载本地图片
     /// - Parameters:
@@ -35,16 +32,23 @@ extension xPagePreviewPicturesViewController {
                        select row : Int = 0,
                        isRepeats : Bool = false)
     {
-        self.topNaviBar?.title = "\(row + 1)/\(locImageArray.count)"
-        var list = [xPageItemPreviewPictures]()
+        var list = [xPageItemPreviewPicture]()
         for img in locImageArray {
-            let item = xPageItemPreviewPictures.xDefaultViewController(locImage: img)
+            let item = xPageItemPreviewPicture.xDefaultViewController(locImage: img)
             list.append(item)
         }
+        self.reload(pictures: list, select: row, isRepeats: isRepeats)
+    }
+    
+    
+    private func reload(pictures list : [xPageItemPicture],
+                        select row : Int = 0,
+                        isRepeats : Bool = false)
+    {
+        self.topNaviBar?.title = "\(row + 1)/\(list.count)" 
         self.childPage.reload(itemViewControllerArray: list,
                               isRepeats: isRepeats)
         guard row < list.count else { return }
         self.childPage.changePage(to: row, animated: false)
     }
-    
 }

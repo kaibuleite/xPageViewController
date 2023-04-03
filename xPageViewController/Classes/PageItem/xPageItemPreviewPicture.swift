@@ -1,5 +1,5 @@
 //
-//  xPageItemPreviewPictures.swift
+//  xPageItemPreviewPicture.swift
 //  GlobalKit
 //
 //  Created by Mac on 2023/3/29.
@@ -8,7 +8,7 @@
 import UIKit
 import xKit
 
-public class xPageItemPreviewPictures: xPageItemImage {
+public class xPageItemPreviewPicture: xPageItemPicture {
 
     // MARK: - IBOutlet Property
     @IBOutlet public weak var contentScroll: UIScrollView!
@@ -40,16 +40,28 @@ public class xPageItemPreviewPictures: xPageItemImage {
     /// 添加图片容器
     override func addImageIcon()
     {
+        // 创建图片控件
         guard let icon = self.createImageIcon() else { return }
-        self.imgIcon = icon
+        // 添加控件
+        self.imageIcon = icon
         self.contentScroll.addSubview(icon)
-        self.contentScroll.contentSize = icon.frame.size
+        self.view.bringSubviewToFront(self.refreshingView)
+        // 调整位置，保证居中
+        var frame = icon.frame
+        let imgH = frame.size.height
+        let contentH = self.view.bounds.height
+        if imgH < contentH {
+            frame.size.height = contentH
+        }
+        icon.frame = frame
+        // 调整缩放范围
+        self.contentScroll.contentSize = frame.size
     }
     
 }
 
 // MARK: - Scroll view delegate
-extension xPageItemPreviewPictures: UIScrollViewDelegate {
+extension xPageItemPreviewPicture: UIScrollViewDelegate {
     
     public func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {

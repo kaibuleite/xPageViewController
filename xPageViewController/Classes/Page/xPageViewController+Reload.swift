@@ -65,33 +65,5 @@ extension xPageViewController {
         guard let page = gesture.view?.tag else { return }
         self.clickHandler?(page)
     }
-    /// 加载网络图片
-    /// - Parameters:
-    ///   - webImageArray: 图片链接
-    public func reload(webImageArray : [String],
-                       isRepeats : Bool = false)
-    {
-        var vcArray = [UIViewController]()
-        for url in webImageArray {
-            let vc = xPageItemImage.xDefaultViewController(webImage: url)
-            vcArray.append(vc)
-        }
-        self.reload(itemViewControllerArray: vcArray,
-                    isRepeats: isRepeats)
-    }
-    /// 加载本地图片
-    /// - Parameters:
-    ///   - locImageArray: 本地图片
-    public func reload(locImageArray : [UIImage],
-                       isRepeats : Bool = false)
-    {
-        var vcArray = [UIViewController]()
-        for img in locImageArray {
-            let vc = xPageItemImage.xDefaultViewController(locImage: img)
-            vcArray.append(vc)
-        }
-        self.reload(itemViewControllerArray: vcArray,
-                    isRepeats : isRepeats)
-    }
     
 }

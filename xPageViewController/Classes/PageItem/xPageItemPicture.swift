@@ -1,5 +1,5 @@
 //
-//  xPageItemImage.swift
+//  xPageItemPicture.swift
 //  Alamofire
 //
 //  Created by Mac on 2020/9/21.
@@ -9,16 +9,28 @@ import UIKit
 import xExtension
 import xWebImage
 
-public class xPageItemImage: xPageItem {
+public class xPageItemPicture: xPageItem {
+    
+    // MARK: - Handler
+    typealias xHandlerLoadPictureCompleted = (CGSize) -> Void
     
     // MARK: - IBOutlet Property
     @IBOutlet weak var refreshingView: UIActivityIndicatorView!
 
     // MARK: - Public Property
     override var typeEmoji: String { return "🌅" }
-    var imgIcon : xWebImageView?
+    public var isAutoScale = false
     var webImage = ""
-    var locImage : UIImage?
+    var locImage = UIColor.xNewRandom(alpha: 0.5).xToImage()
+    var imageIcon : xWebImageView?
+    var imageScaleWidth = CGFloat.zero
+    var imageScaleHeight = CGFloat.zero
+    var loadHandler : xPageItemPicture.xHandlerLoadPictureCompleted?
+    
+    // MARK: - 内存释放
+    deinit {
+        self.loadHandler = nil
+    }
     
     // MARK: - Override Func
     public class func xDefaultViewController(locImage : UIImage) -> Self {
@@ -59,15 +71,26 @@ public class xPageItemImage: xPageItem {
             self.addImageIcon()
         }
     }
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.imageIcon?.layoutIfNeeded()
+    }
     
     // MARK: - 图片容器
     /// 添加图片容器
     func addImageIcon()
     {
+        // 创建图片控件
         guard let icon = self.createImageIcon() else { return }
-        self.imgIcon = icon
-        icon.center = self.view.center
+        // 添加控件
+        self.imageIcon = icon
         self.view.addSubview(icon)
+        self.view.bringSubviewToFront(self.refreshingView)
+        // 调整位置 
+        // 回调信息
+        let size = CGSize(width: self.imageScaleWidth,
+                          height: self.imageScaleHeight)
+        self.loadHandler?(size)
     }
     /// 创建图片容器
     func createImageIcon() -> xWebImageView?
@@ -78,14 +101,26 @@ public class xPageItemImage: xPageItem {
         let imgH = img.size.height
         var frame = self.view.bounds
         // 宽度等于自身，高度自适应
-        let scaleH = frame.size.width * imgH / imgW
-        if scaleH > frame.height {
-            frame.size.height = scaleH
-        }
+        self.imageScaleWidth = frame.width
+        self.imageScaleHeight = frame.size.width * imgH / imgW
+        frame.size.height = self.imageScaleHeight
         let icon = xWebImageView.init(frame: frame)
         icon.image = img
         icon.contentMode = .scaleAspectFit
+        guard self.isAutoScale else { return icon }
+        if self.imageScaleWidth > self.imageScaleHeight {
+            icon.contentMode = .scaleAspectFill
+        } else {
+            icon.contentMode = .scaleAspectFit
+        }
         return icon
+    }
+    
+    // MARK: - 添加回调
+    /// 添加回调
+    func addLoadPictureCompleted(handler : @escaping xPageItemPicture.xHandlerLoadPictureCompleted)
+    {
+        self.loadHandler = handler
     }
     
 }

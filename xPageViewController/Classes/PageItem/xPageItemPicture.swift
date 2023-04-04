@@ -71,10 +71,6 @@ public class xPageItemPicture: xPageItem {
             self.addImageIcon()
         }
     }
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.imageIcon?.layoutIfNeeded()
-    }
     
     // MARK: - 图片容器
     /// 添加图片容器

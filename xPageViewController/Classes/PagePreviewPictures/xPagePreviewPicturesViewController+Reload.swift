@@ -45,9 +45,20 @@ extension xPagePreviewPicturesViewController {
                         select row : Int = 0,
                         isRepeats : Bool = false)
     {
-        self.topNaviBar?.title = "\(row + 1)/\(list.count)" 
+        self.topNaviBar?.title = "\(row + 1)/\(list.count)"
+        let group = DispatchGroup()
+        for item in list {
+            group.enter()
+            item.addLoadPictureCompleted {
+                (size) in
+                group.leave()
+            }
+        }
         self.childPage.reload(itemViewControllerArray: list,
                               isRepeats: isRepeats)
+        group.notify(queue: .main) {
+            self.loadHandler?()
+        }
         guard row < list.count else { return }
         self.childPage.changePage(to: row, animated: false)
     }

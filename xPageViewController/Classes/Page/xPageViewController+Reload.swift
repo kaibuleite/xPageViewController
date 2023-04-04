@@ -44,6 +44,9 @@ extension xPageViewController {
         self.dataArray = list
         self.totalPage = list.count
         self.contentScrollView?.isScrollEnabled = (list.count > 1)
+        if list.count <= 1 {
+            self.isOpenAutoChangeTimer = false
+        }
         // 设置子控制器样式
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()

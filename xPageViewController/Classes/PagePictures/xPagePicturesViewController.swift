@@ -28,7 +28,7 @@ public class xPagePicturesViewController: xViewController {
     var clickHandler : xPageViewController.xHandlerClickPage?
     
     // MARK: - Child
-    let childPage = xPageViewController.xDefaultViewController()
+    public let childPage = xPageViewController.xDefaultViewController()
     
     // MARK: - 内存释放
     deinit {

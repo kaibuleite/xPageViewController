@@ -30,6 +30,7 @@ extension xPagePicturesViewController {
     func initPage()
     {
         self.childPage.isOpenAutoChangeTimer = false
+        self.childPage.changeInterval = 8
         self.childPage.addChangePage {
             [weak self] (page) in
             guard let self = self else { return }

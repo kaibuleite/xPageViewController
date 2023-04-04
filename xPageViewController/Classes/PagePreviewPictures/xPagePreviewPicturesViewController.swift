@@ -11,6 +11,9 @@ import xExtension
 
 public class xPagePreviewPicturesViewController: xViewController {
     
+    // MARK: - Handler
+    public typealias xHandlerLoadCompleted = () -> Void
+    
     // MARK: - Override Property
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -20,8 +23,19 @@ public class xPagePreviewPicturesViewController: xViewController {
     public var maximumZoomScale = CGFloat(3)
     public var minimumZoomScale = CGFloat(1)
     
+    var loadHandler : xPagePreviewPicturesViewController.xHandlerLoadCompleted?
+    var changeHandler : xPageViewController.xHandlerChangePage?
+    var clickHandler : xPageViewController.xHandlerClickPage?
+    
     // MARK: - Child
-    let childPage = xPageViewController.xDefaultViewController()
+    public let childPage = xPageViewController.xDefaultViewController()
+    
+    // MARK: - 内存释放
+    deinit {
+        self.loadHandler = nil
+        self.changeHandler = nil
+        self.clickHandler = nil
+    }
     
     // MARK: - Override Func
     public override class func xDefaultViewController() -> Self {

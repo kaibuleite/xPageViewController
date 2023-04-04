@@ -56,6 +56,10 @@ public class xPageItemPreviewPicture: xPageItemPicture {
         icon.frame = frame
         // 调整缩放范围
         self.contentScroll.contentSize = frame.size
+        // 回调信息
+        let size = CGSize(width: self.imageScaleWidth,
+                          height: self.imageScaleHeight)
+        self.loadHandler?(size)
     }
     
 }

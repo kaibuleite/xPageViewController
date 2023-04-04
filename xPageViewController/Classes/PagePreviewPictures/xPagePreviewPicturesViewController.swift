@@ -47,8 +47,8 @@ public class xPagePreviewPicturesViewController: xViewController {
         super.viewDidLoad()
         // 基本配置
         self.view.backgroundColor = .black
-        self.view.alpha = 0
         self.initPage()
+        self.view.alpha = 0
     }
     
     public override func addChildren() {

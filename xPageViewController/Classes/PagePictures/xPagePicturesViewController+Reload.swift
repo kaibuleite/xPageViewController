@@ -43,7 +43,7 @@ extension xPagePicturesViewController {
     {
         let group = DispatchGroup()
         for item in list {
-            item.isAutoScale = self.isAutoScale
+            item.isAutoAdjustScale = self.isAutoAdjustScale
             group.enter()
             item.addLoadPictureCompleted {
                 [weak self] (size) in

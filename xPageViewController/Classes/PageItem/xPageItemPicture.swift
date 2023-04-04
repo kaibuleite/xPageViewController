@@ -19,7 +19,7 @@ public class xPageItemPicture: xPageItem {
 
     // MARK: - Public Property
     override var typeEmoji: String { return "🌅" }
-    public var isAutoScale = false
+    public var isAutoAdjustScale = false
     var webImage = ""
     var locImage = UIColor.xNewRandom(alpha: 0.5).xToImage()
     var imageIcon = UIImageView()
@@ -93,7 +93,7 @@ public class xPageItemPicture: xPageItem {
         icon.frame = frame
         icon.image = img
         icon.contentMode = .scaleAspectFit
-        guard self.isAutoScale else { return }
+        guard self.isAutoAdjustScale else { return }
         if self.imageScaleWidth > self.imageScaleHeight {
             icon.contentMode = .scaleAspectFill
         } else {

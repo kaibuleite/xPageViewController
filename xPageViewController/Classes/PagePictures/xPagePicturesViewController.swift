@@ -16,7 +16,7 @@ public class xPagePicturesViewController: xViewController {
     
     // MARK: - Public Property
     /// 是否自动调整图片缩放类型
-    public var isAutoScale = true
+    public var isAutoAdjustScale = true
     /// 是否自动调整图片位置
     public var isAutoAdjustFrame = true
     
@@ -46,8 +46,7 @@ public class xPagePicturesViewController: xViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
-        self.view.backgroundColor = .black
-        self.view.alpha = 0
+        self.view.backgroundColor = .clear
         self.initPage()
     }
     

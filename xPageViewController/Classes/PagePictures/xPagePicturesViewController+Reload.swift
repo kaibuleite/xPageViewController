@@ -49,8 +49,8 @@ extension xPagePicturesViewController {
                 [weak self] (size) in
                 group.leave()
                 guard let self = self else { return }
-                if size.height > self.maxPictureHeight { self.maxPictureHeight = size.height }
                 if size.height < self.minPictureHeight { self.minPictureHeight = size.height }
+                if size.height > self.maxPictureHeight { self.maxPictureHeight = size.height }
             } 
         }
         self.childPage.reload(itemViewControllerArray: list,
@@ -61,7 +61,7 @@ extension xPagePicturesViewController {
             guard self.isAutoAdjustFrame else { return }
             print("开始自动调整")
             for item in list {
-                guard let icon = item.imageIcon else { continue }
+                let icon = item.imageIcon
                 var frame = icon.frame
                 frame.origin.y = (self.view.bounds.height - frame.height) / 2
                 icon.frame = frame

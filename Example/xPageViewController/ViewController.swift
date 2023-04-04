@@ -8,6 +8,7 @@
 
 import UIKit
 import xKit
+import xWebImage
 import xPageViewController
 
 class ViewController: xViewController {
@@ -18,7 +19,8 @@ class ViewController: xViewController {
     
     // MARK: - Public Property
     var vcList = [xPageItem]()
-    var imgList = [UIImage]()
+    var locImgList = [UIImage]()
+    var webImgList = [String]()
     
     // MARK: - Child
     let childPage = xPageViewController.xDefaultViewController()
@@ -29,7 +31,11 @@ class ViewController: xViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 基本配置
-        self.titleLbl.text = ""
+        xWebImageManager.clearSDWebImageCache {
+            
+        }
+        self.view.backgroundColor = .groupTableViewBackground
+        self.titleLbl.text = "-"
         for _ in 0 ..< 5 {
             let vc = xPageItem()
             vc.view.backgroundColor = .xNewRandom(alpha: 0.8)
@@ -37,9 +43,32 @@ class ViewController: xViewController {
         }
         for i in 0 ..< 10 {
             guard let img = "IMG_\(i)".xToImage() else { continue }
-            self.imgList.append(img)
+            self.locImgList.append(img)
         }
-        self.titleLbl.text = "0"
+        let arr = [
+            "000/000/020/61aad27cbf838540.jpg",
+            "000/000/020/6217328dbd59c168.jpg",
+            "000/000/020/61cbb211eeb87714.jpg",
+            "000/000/004/61a1a8cf99f6f430.jpg",
+            "000/000/020/61ef957e5bb3c333.jpg",
+            "000/000/020/61efa3ff06cdf865.jpg",
+            "000/000/020/61ef8c737e135297.jpg",
+            "000/000/012/61ee450bc117f794.jpg",
+            "000/000/009/612843eb4155b234.jpg",
+            "000/000/012/61a9be818b47c738.jpg",
+            "000/000/020/6251475a1371d738.png",
+            "000/000/020/621733df73b9e366.jpg",
+            "000/000/020/6217339ab3eb1658.jpg",
+            "000/000/012/6172136e58dbd764.jpg",
+            "000/000/012/618f4ef5bf569353.jpg",
+            "000/000/004/617be43a47328749.jpg",
+            "000/000/004/61a07831dbef1321.jpg",
+            "000/000/009/61285d882042c236.png",
+            "000/000/012/6275e85d7926f817.png",
+            "000/000/020/625a77234cb26665.jpg",]
+        for str in arr {
+            self.webImgList.append("https://mall-fudouzhongkang.oss-cn-shenzhen.aliyuncs.com/upload/group/\(str)")
+        }
         
         self.childPage.isOpenAutoChangeTimer = true
         self.childPage.changeInterval = 8
@@ -99,7 +128,7 @@ class ViewController: xViewController {
         self.childPage.closeTimer()
         
         self.childPictures.view.alpha = 1
-        self.childPictures.reload(locImageArray: self.imgList)
+        self.childPictures.reload(webImageArray: self.webImgList)
         self.childPreviewPictures.view.alpha = 0
     }
     @IBAction func pagePreviewPicBtnClick()
@@ -115,7 +144,7 @@ class ViewController: xViewController {
         
         self.childPictures.view.alpha = 0
         self.childPreviewPictures.view.alpha = 1
-        self.childPreviewPictures.reload(locImageArray: self.imgList)
+        self.childPreviewPictures.reload(locImageArray: self.locImgList)
     }
 }
 

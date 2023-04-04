@@ -22,7 +22,7 @@ public class xPageItemPicture: xPageItem {
     public var isAutoScale = false
     var webImage = ""
     var locImage = UIColor.xNewRandom(alpha: 0.5).xToImage()
-    var imageIcon : xWebImageView?
+    var imageIcon = UIImageView()
     var imageScaleWidth = CGFloat.zero
     var imageScaleHeight = CGFloat.zero
     var loadHandler : xPageItemPicture.xHandlerLoadPictureCompleted?
@@ -52,46 +52,35 @@ public class xPageItemPicture: xPageItem {
         self.refreshingView.stopAnimating()
     }
     
-    public override func addKit() {
-        guard self.webImage.xContains(subStr: "http") else {
-            self.addImageIcon()
-            return
-        }
-        self.refreshingView.isHidden = false
-        self.refreshingView.startAnimating()
-        xWebImageManager.downloadImage(url: self.webImage) {
-            (receivedSize, expectedSize, targetURL) in
-            
-        } completed: {
-            [weak self] (image, data, error, finished) in
-            guard let self = self else { return }
-            self.refreshingView.isHidden = true
-            self.refreshingView.stopAnimating()
-            self.locImage = image
-            self.addImageIcon()
+    // MARK: - 添加图片
+    public override func addKit()
+    {
+        if self.webImage.xContains(subStr: "http") {
+            self.refreshingView.isHidden = false
+            self.refreshingView.startAnimating()
+            xWebImageManager.downloadImage(url: self.webImage) {
+                (receivedSize, expectedSize, targetURL) in
+                
+            } completed: {
+                [weak self] (image, data, error, finished) in
+                guard let self = self else { return }
+                self.refreshingView.isHidden = true
+                self.refreshingView.stopAnimating()
+                self.locImage = image
+                self.loadImage(image)
+            }
+        } else {
+            self.loadImage(self.locImage)
         }
     }
-    
-    // MARK: - 图片容器
-    /// 添加图片容器
-    func addImageIcon()
+    // MARK: - 加载图片
+    /// 加载图片
+    func loadImage(_ image : UIImage?)
     {
-        // 创建图片控件
-        guard let icon = self.createImageIcon() else { return }
-        // 添加控件
-        self.imageIcon = icon
-        self.view.addSubview(icon)
-        self.view.bringSubviewToFront(self.refreshingView)
-        // 调整位置 
-        // 回调信息
-        let size = CGSize(width: self.imageScaleWidth,
-                          height: self.imageScaleHeight)
-        self.loadHandler?(size)
-    }
-    /// 创建图片容器
-    func createImageIcon() -> xWebImageView?
-    {
-        guard let img = self.locImage else { return nil }
+        defer {
+            self.loadImageCompleted()
+        }
+        guard let img = image else { return }
         // 按比例修改图片容器大小
         let imgW = img.size.width
         let imgH = img.size.height
@@ -100,16 +89,29 @@ public class xPageItemPicture: xPageItem {
         self.imageScaleWidth = frame.width
         self.imageScaleHeight = frame.size.width * imgH / imgW
         frame.size.height = self.imageScaleHeight
-        let icon = xWebImageView.init(frame: frame)
+        let icon = self.imageIcon
+        icon.frame = frame
         icon.image = img
         icon.contentMode = .scaleAspectFit
-        guard self.isAutoScale else { return icon }
+        guard self.isAutoScale else { return }
         if self.imageScaleWidth > self.imageScaleHeight {
             icon.contentMode = .scaleAspectFill
         } else {
             icon.contentMode = .scaleAspectFit
         }
-        return icon
+    }
+    /// 图片加载完成
+    func loadImageCompleted()
+    {
+        // 添加控件
+        let icon = self.imageIcon
+        self.view.addSubview(icon)
+        self.view.bringSubviewToFront(self.refreshingView)
+        // 调整位置 
+        // 回调信息
+        let size = CGSize(width: self.imageScaleWidth,
+                          height: self.imageScaleHeight)
+        self.loadHandler?(size)
     }
     
     // MARK: - 添加回调

@@ -15,6 +15,8 @@ public class xPageItemPreviewPicture: xPageItemPicture {
     
     // MARK: - Public Property
     override var typeEmoji: String { return "🗾" }
+    var minimumZoomScale = CGFloat(1)
+    var maximumZoomScale = CGFloat(3)
     
     // MARK: - 内存释放
     deinit {
@@ -27,23 +29,20 @@ public class xPageItemPreviewPicture: xPageItemPicture {
         // 基本配置
         self.view.backgroundColor = .black
         self.contentScroll.delegate = self
-        guard let parent = self.parent as? xPagePreviewPicturesViewController else { return }
-        self.contentScroll.maximumZoomScale = parent.maximumZoomScale
-        self.contentScroll.minimumZoomScale = parent.minimumZoomScale
+        self.contentScroll.maximumZoomScale = self.maximumZoomScale
+        self.contentScroll.minimumZoomScale = self.minimumZoomScale
     }
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.contentScroll.setZoomScale(1, animated: false)
     }
     
-    // MARK: - 图片容器
-    /// 添加图片容器
-    override func addImageIcon()
+    // MARK: - 加载图片
+    /// 图片加载完成
+    override func loadImageCompleted()
     {
-        // 创建图片控件
-        guard let icon = self.createImageIcon() else { return }
         // 添加控件
-        self.imageIcon = icon
+        let icon = self.imageIcon
         self.contentScroll.addSubview(icon)
         self.view.bringSubviewToFront(self.refreshingView)
         // 调整位置，保证居中
@@ -69,26 +68,27 @@ extension xPageItemPreviewPicture: UIScrollViewDelegate {
     
     public func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
-        let icon = self.contentScroll.subviews.first
-        return icon
+        let view = self.contentScroll.subviews.first
+//        print("缩放对象 \(view)")
+        return view
     }
      
     public func scrollViewWillBeginZooming(_ scrollView: UIScrollView,
                                            with view: UIView?)
     {
-        // 开始缩放
+//        print("开始缩放")
     }
     
     public func scrollViewDidZoom(_ scrollView: UIScrollView)
     {
-        // 缩放中
+//        print("缩放中")
     }
     
     public func scrollViewDidEndZooming(_ scrollView: UIScrollView,
                                         with view: UIView?,
                                         atScale scale: CGFloat)
     {
-        // 缩放结束
+//        print("缩放结束")
     }
     
 }

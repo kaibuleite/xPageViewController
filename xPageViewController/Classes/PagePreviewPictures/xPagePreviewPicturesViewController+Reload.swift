@@ -41,13 +41,15 @@ extension xPagePreviewPicturesViewController {
     }
     
     
-    private func reload(pictures list : [xPageItemPicture],
+    private func reload(pictures list : [xPageItemPreviewPicture],
                         select row : Int = 0,
                         isRepeats : Bool = false)
     {
         self.topNaviBar?.title = "\(row + 1)/\(list.count)"
         let group = DispatchGroup()
         for item in list {
+            item.minimumZoomScale = self.minimumZoomScale
+            item.maximumZoomScale = self.maximumZoomScale
             group.enter()
             item.addLoadPictureCompleted {
                 (size) in

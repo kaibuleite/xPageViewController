@@ -20,8 +20,8 @@ public class xPagePreviewPicturesViewController: xViewController {
     }
     
     // MARK: - Public Property
-    public var maximumZoomScale = CGFloat(3)
     public var minimumZoomScale = CGFloat(1)
+    public var maximumZoomScale = CGFloat(3)
     
     var loadHandler : xPagePreviewPicturesViewController.xHandlerLoadCompleted?
     var changeHandler : xPageViewController.xHandlerChangePage?

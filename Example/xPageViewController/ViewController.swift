@@ -95,11 +95,11 @@ class ViewController: xViewController {
         }
     }
     override func addChildren() {
-        self.childPage.view.alpha = 0
+        self.childPage.view.isHidden = true
         self.xAddChild(viewController: self.childPage, in: self.childContainer!)
-        self.childPictures.view.alpha = 0
+        self.childPictures.view.isHidden = true
         self.xAddChild(viewController: self.childPictures, in: self.childContainer!)
-        self.childPreviewPictures.view.alpha = 0
+        self.childPreviewPictures.view.isHidden = true
         self.xAddChild(viewController: self.childPreviewPictures, in: self.childContainer!)
         // 预览在内部主线程添加xPage控件，如果这里刷新数据会导致大小不对
     }
@@ -113,23 +113,25 @@ class ViewController: xViewController {
         self.childContainer?.layoutIfNeeded()
         
         self.titleLbl.isHidden = false
-        self.childPage.view.alpha = 1
+        self.childPage.view.isHidden = false
         self.childPage.openTimer()
         self.childPage.reload(itemViewControllerArray: self.vcList)
         
-        self.childPictures.view.alpha = 0
-        self.childPreviewPictures.view.alpha = 0
+        self.childPictures.view.isHidden = true
+        
+        self.childPreviewPictures.dismiss()
     }
     @IBAction func pagePicBtnClick()
     {
         print("\(#function) in \(type(of: self))")
         self.titleLbl.isHidden = true
-        self.childPage.view.alpha = 0
+        self.childPage.view.isHidden = true
         self.childPage.closeTimer()
         
-        self.childPictures.view.alpha = 1
+        self.childPictures.view.isHidden = false
         self.childPictures.reload(webImageArray: self.webImgList)
-        self.childPreviewPictures.view.alpha = 0
+        
+        self.childPreviewPictures.dismiss()
     }
     @IBAction func pagePreviewPicBtnClick()
     {
@@ -139,11 +141,12 @@ class ViewController: xViewController {
         self.childContainer?.layoutIfNeeded()
         
         self.titleLbl.isHidden = true
-        self.childPage.view.alpha = 0
+        self.childPage.view.isHidden = true
         self.childPage.closeTimer()
         
-        self.childPictures.view.alpha = 0
-        self.childPreviewPictures.view.alpha = 1
+        self.childPictures.view.isHidden = true
+        
+        self.childPreviewPictures.display()
         self.childPreviewPictures.reload(locImageArray: self.locImgList)
     }
 }

@@ -47,8 +47,8 @@ public class xPagePreviewPicturesViewController: xViewController {
         super.viewDidLoad()
         // 基本配置
         self.view.backgroundColor = .black
+        self.view.isHidden = true
         self.initPage()
-        self.view.alpha = 0
     }
     
     public override func addChildren() {
@@ -61,6 +61,7 @@ public class xPagePreviewPicturesViewController: xViewController {
     {
         self.view.superview?.bringSubviewToFront(self.view)
         self.view.alpha = 1
+        self.view.isHidden = false
     }
     
     /// 隐藏
@@ -68,6 +69,9 @@ public class xPagePreviewPicturesViewController: xViewController {
     {
         UIView.animate(withDuration: 0.25) {
             self.view.alpha = 0
+        } completion: {
+            (finished) in
+            self.view.isHidden = true
         }
     }
     

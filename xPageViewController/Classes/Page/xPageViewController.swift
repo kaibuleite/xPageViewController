@@ -114,7 +114,6 @@ public class xPageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         self.contentScrollView?.delegate = self
-        self.contentScrollView?.isScrollEnabled = false
     }
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

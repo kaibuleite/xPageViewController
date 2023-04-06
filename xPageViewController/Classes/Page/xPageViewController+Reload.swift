@@ -39,22 +39,23 @@ extension xPageViewController {
             }
         }
         // 绑定数据
+        let count = list.count
         self.currentPage = 0
         self.pendingPage = 0
         self.dataArray = list
-        self.totalPage = list.count
-        self.contentScrollView?.isScrollEnabled = (list.count > 1)
+        self.totalPage = count
+        let isScrollEnabled = (list.count > 1)
+        self.contentScrollView?.isScrollEnabled = isScrollEnabled
         if list.count <= 1 {
             self.isOpenAutoChangeTimer = false
         }
+        print("PageItem数量【\(count)】\(isScrollEnabled ? "开启" : "关闭")拖动功能")
         // 设置子控制器样式
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
         for (i, vc) in itemViewControllerArray.enumerated()  {
             vc.view.tag = i
             vc.view.frame = self.view.bounds
-            // 没有单击事件回调就不用添加手势了
-            guard self.clickHandler != nil else { continue }
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             vc.view.addGestureRecognizer(tap)

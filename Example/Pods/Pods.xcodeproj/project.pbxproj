@@ -15,6 +15,7 @@
 		04953147003D637237AD7C4FB65080AB /* UIImage+GIF.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D633DCAB1F57848742F1D88EB95094 /* UIImage+GIF.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		049797A7BDE4E93A9A7234323722951F /* SDWebImageDownloaderResponseModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9FD83503D4258A0794C4E9E6297653 /* SDWebImageDownloaderResponseModifier.m */; };
 		04B16DC0BD9D798F895F5870A7C7B067 /* SDImageCachesManagerOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEE89C7D58C50B45DEB5BDAC034C811 /* SDImageCachesManagerOperation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		04C694C829E50342003E71F2 /* xPagePreviewPicturesViewController+Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C694C729E50342003E71F2 /* xPagePreviewPicturesViewController+Func.swift */; };
 		04F7AE3429DA9BC900C74A7D /* xPagePicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7AE3329DA9BC900C74A7D /* xPagePicturesViewController.swift */; };
 		04F7AE3829DA9BF300C74A7D /* xPagePicturesViewController+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7AE3729DA9BF300C74A7D /* xPagePicturesViewController+Page.swift */; };
 		04F7AE3A29DA9BFF00C74A7D /* xPagePicturesViewController+Reload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F7AE3929DA9BFF00C74A7D /* xPagePicturesViewController+Reload.swift */; };
@@ -391,6 +392,7 @@
 		005DBB71804B64029FEDD18734BB0CB1 /* xKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = xKit.debug.xcconfig; sourceTree = "<group>"; };
 		00B727AF121955ECFEE9D951BF967E43 /* xNavigationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = xNavigationView.swift; path = xKit/Classes/NavigationController/xNavigationView.swift; sourceTree = "<group>"; };
 		01642C0ABFAB49DFD7CD831AE387C6C2 /* xExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = xExtension.debug.xcconfig; sourceTree = "<group>"; };
+		04C694C729E50342003E71F2 /* xPagePreviewPicturesViewController+Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xPagePreviewPicturesViewController+Func.swift"; sourceTree = "<group>"; };
 		04F7AE3329DA9BC900C74A7D /* xPagePicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xPagePicturesViewController.swift; sourceTree = "<group>"; };
 		04F7AE3529DA9BDF00C74A7D /* xPagePicturesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPagePicturesViewController.storyboard; sourceTree = "<group>"; };
 		04F7AE3729DA9BF300C74A7D /* xPagePicturesViewController+Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "xPagePicturesViewController+Page.swift"; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 				93801B717AFC1CA3E49AB9631E2BF03A /* xPagePreviewPicturesViewController.storyboard */,
 				6614986EB4D1CA6D88BDACA762FF2606 /* xPagePreviewPicturesViewController+Page.swift */,
 				FB9EAB219F434E201A1099E347E14DE8 /* xPagePreviewPicturesViewController+Reload.swift */,
+				04C694C729E50342003E71F2 /* xPagePreviewPicturesViewController+Func.swift */,
 			);
 			name = PagePreviewPictures;
 			path = xPageViewController/Classes/PagePreviewPictures;
@@ -1956,6 +1959,7 @@
 				04F7AE3829DA9BF300C74A7D /* xPagePicturesViewController+Page.swift in Sources */,
 				31BB5F82A7F4DB42EDD66FE89A31708D /* xPagePreviewPicturesViewController.swift in Sources */,
 				DA1E91502598AEB4FA788BB1049B1CF0 /* xPagePreviewPicturesViewController.storyboard in Sources */,
+				04C694C829E50342003E71F2 /* xPagePreviewPicturesViewController+Func.swift in Sources */,
 				BEEAB4E58F9E4D2E618750A30ABA3134 /* xPagePreviewPicturesViewController+Page.swift in Sources */,
 				0A05530AFF5C5EAC9FEF6B6F77522674 /* xPagePreviewPicturesViewController+Reload.swift in Sources */,
 				D7945513E5315EC5CCDF0FCE3795B362 /* xPageViewController-dummy.m in Sources */,

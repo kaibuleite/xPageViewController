@@ -25,7 +25,6 @@ class ViewController: xViewController {
     // MARK: - Child
     let childPage = xPageViewController.xDefaultViewController()
     let childPictures = xPagePicturesViewController.xDefaultViewController()
-    let childPreviewPictures = xPagePreviewPicturesViewController.xDefaultViewController()
     
     // MARK: - Override Func
     override func viewDidLoad() {
@@ -97,10 +96,9 @@ class ViewController: xViewController {
     override func addChildren() {
         self.childPage.view.isHidden = true
         self.xAddChild(viewController: self.childPage, in: self.childContainer!)
+        
         self.childPictures.view.isHidden = true
         self.xAddChild(viewController: self.childPictures, in: self.childContainer!)
-        self.childPreviewPictures.view.isHidden = true
-        self.xAddChild(viewController: self.childPreviewPictures, in: self.childContainer!)
         // 预览在内部主线程添加xPage控件，如果这里刷新数据会导致大小不对
     }
 
@@ -117,9 +115,7 @@ class ViewController: xViewController {
         self.childPage.openTimer()
         self.childPage.reload(itemViewControllerArray: self.vcList)
         
-        self.childPictures.view.isHidden = true
-        
-        self.childPreviewPictures.dismiss()
+        self.childPictures.view.isHidden = true 
     }
     @IBAction func pagePicBtnClick()
     {
@@ -130,24 +126,15 @@ class ViewController: xViewController {
         
         self.childPictures.view.isHidden = false
         self.childPictures.reload(webImageArray: self.webImgList)
-        
-        self.childPreviewPictures.dismiss()
     }
     @IBAction func pagePreviewPicBtnClick()
     {
         print("\(#function) in \(type(of: self))")
-        self.contentHeightLayout.constant = 500
-        self.childContainer?.setNeedsLayout()
-        self.childContainer?.layoutIfNeeded()
-        
-        self.titleLbl.isHidden = true
-        self.childPage.view.isHidden = true
-        self.childPage.closeTimer()
-        
-        self.childPictures.view.isHidden = true
-        
-        self.childPreviewPictures.display()
-        self.childPreviewPictures.reload(locImageArray: self.locImgList)
+        if arc4random() % 2 == 0 {
+            xPagePreviewPicturesViewController.display(from: self, webImageArray: self.webImgList)
+        } else {
+            xPagePreviewPicturesViewController.display(from: self, locImageArray: self.locImgList)
+        }
     }
 }
 

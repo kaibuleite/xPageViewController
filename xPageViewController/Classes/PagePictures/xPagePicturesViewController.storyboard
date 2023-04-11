@@ -17,40 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wf-KP-a2u" customClass="xSafeView" customModule="xKit">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AU0-L9-Lq8" customClass="xContainerView" customModule="xKit">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                                        <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="AU0-L9-Lq8" firstAttribute="top" secondItem="8wf-KP-a2u" secondAttribute="top" id="Ha0-rN-Uw0"/>
-                                    <constraint firstItem="AU0-L9-Lq8" firstAttribute="leading" secondItem="8wf-KP-a2u" secondAttribute="leading" id="ZRP-NZ-cFX"/>
-                                    <constraint firstAttribute="bottom" secondItem="AU0-L9-Lq8" secondAttribute="bottom" id="lzD-on-aER"/>
-                                    <constraint firstAttribute="trailing" secondItem="AU0-L9-Lq8" secondAttribute="trailing" id="sjM-gU-ru3"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AU0-L9-Lq8" customClass="xContainerView" customModule="xKit">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RJa-oc-Nju"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8wf-KP-a2u" firstAttribute="leading" secondItem="RJa-oc-Nju" secondAttribute="leading" id="9yq-fe-LYv"/>
-                            <constraint firstItem="8wf-KP-a2u" firstAttribute="top" secondItem="RJa-oc-Nju" secondAttribute="top" id="dpZ-yD-rIs"/>
-                            <constraint firstItem="RJa-oc-Nju" firstAttribute="bottom" secondItem="8wf-KP-a2u" secondAttribute="bottom" id="fhu-Ra-N3L"/>
-                            <constraint firstItem="RJa-oc-Nju" firstAttribute="trailing" secondItem="8wf-KP-a2u" secondAttribute="trailing" id="yeY-kr-Rfm"/>
+                            <constraint firstItem="AU0-L9-Lq8" firstAttribute="top" secondItem="gaQ-GF-5Nc" secondAttribute="top" id="4V5-kG-fbB"/>
+                            <constraint firstAttribute="trailing" secondItem="AU0-L9-Lq8" secondAttribute="trailing" id="dho-Qa-AJx"/>
+                            <constraint firstAttribute="bottom" secondItem="AU0-L9-Lq8" secondAttribute="bottom" id="ktg-D8-sTc"/>
+                            <constraint firstItem="AU0-L9-Lq8" firstAttribute="leading" secondItem="gaQ-GF-5Nc" secondAttribute="leading" id="uob-8N-hvA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="childContainer" destination="AU0-L9-Lq8" id="kFt-sF-blm"/>
-                        <outlet property="safeView" destination="8wf-KP-a2u" id="u9b-jb-Eud"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQF-dv-fEo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-504" y="100"/>
+            <point key="canvasLocation" x="-504.34782608695656" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>

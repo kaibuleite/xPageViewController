@@ -50,29 +50,14 @@ public class xPagePreviewPicturesViewController: xViewController {
         self.view.isHidden = true
         self.initPage()
     }
+    public override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // 自动释放
+        self.dismiss()
+    }
     
     public override func addChildren() {
         self.xAddChild(viewController: self.childPage, in: self.childContainer!)
-    }
-    
-    // MARK: - 显示隐藏
-    /// 显示
-    public func display()
-    {
-        self.view.superview?.bringSubviewToFront(self.view)
-        self.view.alpha = 1
-        self.view.isHidden = false
-    }
-    
-    /// 隐藏
-    public func dismiss()
-    {
-        UIView.animate(withDuration: 0.25) {
-            self.view.alpha = 0
-        } completion: {
-            (finished) in
-            self.view.isHidden = true
-        }
-    }
+    } 
     
 }

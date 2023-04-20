@@ -110,9 +110,6 @@ public class xPageViewController: UIPageViewController {
             self.contentScrollView = scrol
             break
         }
-        // 关联代理
-        self.dataSource = self
-        self.delegate = self
         self.contentScrollView?.delegate = self
     }
     public override func viewDidAppear(_ animated: Bool) {

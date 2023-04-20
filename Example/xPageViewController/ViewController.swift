@@ -40,7 +40,7 @@ class ViewController: xViewController {
             vc.view.backgroundColor = .xNewRandom(alpha: 0.8)
             self.vcList.append(vc)
         }
-        for i in 0 ..< 10 {
+        for i in 0 ..< 1 {
             guard let img = "IMG_\(i)".xToImage() else { continue }
             self.locImgList.append(img)
         }

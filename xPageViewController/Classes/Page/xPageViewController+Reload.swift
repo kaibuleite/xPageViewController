@@ -18,7 +18,6 @@ extension xPageViewController {
                        isRepeats : Bool = false)
     {
         var list = itemViewControllerArray
-        self.contentScrollView?.isScrollEnabled = false
         guard list.count > 0 else {
             print("⚠️ 数据不能为0")
             return
@@ -45,11 +44,16 @@ extension xPageViewController {
         self.dataArray = list
         self.totalPage = count
         let isScrollEnabled = (list.count > 1)
-        self.contentScrollView?.isScrollEnabled = isScrollEnabled
-        if list.count <= 1 {
+        if isScrollEnabled {
+            print("共【\(count)】页，开启换页功能")
+            self.dataSource = self
+            self.delegate = self
+        } else {
+            print("共【\(count)】页，关闭换页功能")
+            self.dataSource = nil
+            self.delegate = nil
             self.isOpenAutoChangeTimer = false
         }
-        print("PageItem数量【\(count)】\(isScrollEnabled ? "开启" : "关闭")拖动功能")
         // 设置子控制器样式
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()

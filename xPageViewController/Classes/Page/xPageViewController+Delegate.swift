@@ -17,6 +17,7 @@ extension xPageViewController: UIPageViewControllerDataSource {
         // print("上一页")
         let page = viewController.view.tag - 1
         let safePage = self.checkPageSafe(page)
+        guard safePage != self.currentPage else { return nil }
         let vc = self.dataArray.xObject(at: safePage)
         return vc
     }
@@ -24,8 +25,10 @@ extension xPageViewController: UIPageViewControllerDataSource {
                                    viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
         // print("下一页")
+        guard self.dataArray.count > 1 else { return nil }
         let page = viewController.view.tag + 1
         let safePage = self.checkPageSafe(page)
+        guard safePage != self.currentPage else { return nil }
         let vc = self.dataArray.xObject(at: safePage)
         return vc
     }

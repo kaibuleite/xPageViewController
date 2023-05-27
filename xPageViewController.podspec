@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xPageViewController'
-  s.version          = '1.1.9'
+  s.version          = '1.2.0'
   s.summary          = 'Swift xPageViewController.'
   s.swift_version    = '5'      # Swift版本号
 

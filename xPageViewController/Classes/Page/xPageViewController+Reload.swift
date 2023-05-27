@@ -60,6 +60,8 @@ extension xPageViewController {
         for (i, vc) in itemViewControllerArray.enumerated()  {
             vc.view.tag = i
             vc.view.frame = self.view.bounds
+            // 添加点击事件
+            guard self.clickHandler != nil else { continue }
             vc.view.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapItem(_:)))
             vc.view.addGestureRecognizer(tap)

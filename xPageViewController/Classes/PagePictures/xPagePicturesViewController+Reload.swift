@@ -59,13 +59,26 @@ extension xPagePicturesViewController {
             print("图片高度区间【\(self.minPictureHeight),\(self.maxPictureHeight)】")
             self.loadHandler?(self.minPictureHeight, self.maxPictureHeight)
             guard self.isAutoAdjustFrame else { return }
-            print("开始自动调整")
-            for item in list {
-                let icon = item.imageIcon
-                var frame = icon.frame
-                frame.origin.y = (self.view.bounds.height - frame.height) / 2
-                icon.frame = frame
-            }
+            // 延迟调整，保证回调执行
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25, execute: {
+                print("开始自动调整")
+                self.adjustPicturesFrame()
+            })
+        }
+    }
+    
+    // MARK: - 调整Frame
+    /// 调整Frame
+    public func adjustPicturesFrame()
+    {
+        let list = self.childPage.dataArray
+        let frame1 = self.view.bounds
+        for obj in list {
+            guard let item = obj as? xPageItemPicture else { continue }
+            let icon = item.imageIcon
+            var frame2 = icon.frame
+            frame2.origin.y = (frame1.height - frame2.height) / 2
+            icon.frame = frame2
         }
     }
     

@@ -17,8 +17,10 @@ public class xPageItemPicture: xPageItem {
     // MARK: - IBOutlet Property
     @IBOutlet weak var refreshingView: UIActivityIndicatorView!
 
+    // MARK: - Override Property
+    public override var typeEmoji: String { return "🌅" }
+    
     // MARK: - Public Property
-    override var typeEmoji: String { return "🌅" }
     public var isAutoAdjustScale = false
     var webImage = ""
     var locImage = UIColor.xNewRandom(alpha: 0.5).xToImage()

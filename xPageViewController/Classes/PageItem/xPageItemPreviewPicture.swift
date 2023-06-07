@@ -13,8 +13,10 @@ public class xPageItemPreviewPicture: xPageItemPicture {
     // MARK: - IBOutlet Property
     @IBOutlet public weak var contentScroll: UIScrollView!
     
+    // MARK: - Override Property
+    public override var typeEmoji: String { return "🗾" }
+    
     // MARK: - Public Property
-    override var typeEmoji: String { return "🗾" }
     var minimumZoomScale = CGFloat(1)
     var maximumZoomScale = CGFloat(3)
     

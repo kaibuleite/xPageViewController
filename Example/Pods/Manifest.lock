@@ -1,14 +1,14 @@
 PODS:
-  - SDWebImage (5.15.5):
-    - SDWebImage/Core (= 5.15.5)
-  - SDWebImage/Core (5.15.5)
+  - SDWebImage (5.16.0):
+    - SDWebImage/Core (= 5.16.0)
+  - SDWebImage/Core (5.16.0)
   - xDefine (1.0.6)
   - xExtension (1.1.6):
     - xDefine
-  - xKit (1.2.6):
+  - xKit (1.2.7):
     - xDefine
     - xExtension
-  - xPageViewController (1.1.2):
+  - xPageViewController (1.2.1):
     - xExtension
     - xWebImage
   - xWebImage (1.0.6):
@@ -33,13 +33,13 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SDWebImage: 2aea163b50bfcb569a2726b6a754c54a4506fcf6
   xDefine: 74915e20fdc2bb56dc50e981684d532baa7200ab
   xExtension: ad23e756488b0b352b253626375ec6a77459538b
-  xKit: b14287a9438d96503b854cae1ab101369d35c708
-  xPageViewController: 70686b00b5693b4a418c79eb5e4f3459ac2fa013
+  xKit: 887712735e5d5c5db98ab5d2274e912f86d96d8b
+  xPageViewController: c105a63cbe5998829e7cb260bec6ef9eb30591d0
   xWebImage: edd31a022085daee0506542a99cf1d98f41968f7
 
 PODFILE CHECKSUM: 7783755b769f2a04b10dddaf55bc24544ab231cf
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

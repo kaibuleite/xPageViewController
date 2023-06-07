@@ -24,6 +24,8 @@ open class xViewController: UIViewController {
     }
     
     // MARK: - Public Property
+    /// 用于内存释放提示(可快速定位被释放的对象)
+    open var typeEmoji : String { return "♻️" }
     /// 是否显示中
     public var isAppear = false
     /// 是否完成数据加载(默认已完成)
@@ -35,8 +37,8 @@ open class xViewController: UIViewController {
     deinit {
         let info = self.xClassInfoStruct
         let space = info.space
-        let name = info.name 
-        print("♻️【\(space).\(name)】")
+        let name = info.name
+        print("\(self.typeEmoji)【\(space).\(name)】")
     }
     
     // MARK: - Open Override Func

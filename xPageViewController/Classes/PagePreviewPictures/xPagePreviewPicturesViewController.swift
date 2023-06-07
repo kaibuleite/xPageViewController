@@ -19,6 +19,9 @@ public class xPagePreviewPicturesViewController: xViewController {
         return .lightContent
     }
     
+    // MARK: - Override Property
+    public override var typeEmoji: String { return "👁" }
+    
     // MARK: - Public Property
     public var minimumZoomScale = CGFloat(1)
     public var maximumZoomScale = CGFloat(3)

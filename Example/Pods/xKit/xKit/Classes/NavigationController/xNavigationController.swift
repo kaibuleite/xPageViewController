@@ -13,13 +13,15 @@ open class xNavigationController: UINavigationController {
     // MARK: - Public Property
     /// 是否显示返回按钮上的文字(默认不显示)
     open var isShowBackItemTitle = false
+    /// 用于内存释放提示(可快速定位被释放的对象)
+    open var typeEmoji : String { return "✈️" }
     
     // MARK: - 内存释放
     deinit {
         let info = self.xClassInfoStruct
         let space = info.space
         let name = info.name
-        print("✈️【\(space).\(name)】")
+        print("\(self.typeEmoji)【\(space).\(name)】")
     }
     
     // MARK: - Open Override Func

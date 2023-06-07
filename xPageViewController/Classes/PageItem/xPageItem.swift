@@ -10,16 +10,17 @@ import xKit
 
 open class xPageItem: UIViewController {
     
-    // MARK: - Public Property 
-    var typeEmoji : String { return "🥚" }
+    // MARK: - Override Property
+    open var typeEmoji: String { return "🥚" }
+    
+    // MARK: - Public Property
     
     // MARK: - 内存释放
     deinit {
         let info = self.xClassInfoStruct
         let space = info.space
         let name = info.name
-        let type = self.typeEmoji
-        print("\(type)_\(self.view.tag)【\(space).\(name)】")
+        print("\(self.typeEmoji)\(self.view.tag)【\(space).\(name)】")
     }
     
     // MARK: - Override Func

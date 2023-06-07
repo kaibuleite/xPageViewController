@@ -14,6 +14,9 @@ public class xPagePicturesViewController: xViewController {
     // MARK: - Handler
     public typealias xHandlerLoadCompleted = (CGFloat, CGFloat) -> Void
     
+    // MARK: - Override Property
+    public override var typeEmoji: String { return "🎨" }
+    
     // MARK: - Public Property
     /// 是否自动调整图片缩放类型
     public var isAutoAdjustScale = true

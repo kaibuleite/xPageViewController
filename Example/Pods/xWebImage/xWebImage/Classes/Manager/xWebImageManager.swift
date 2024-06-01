@@ -70,8 +70,9 @@ public class xWebImageManager: NSObject {
     {
         let op1 = SDWebImageDownloaderOptions.highPriority
         let op2 = SDWebImageDownloaderOptions.scaleDownLargeImages
-        let op3 = SDWebImageDownloaderOptions.avoidDecodeImage
-        let options = SDWebImageDownloaderOptions.init(rawValue: op1.rawValue | op2.rawValue | op3.rawValue)
+//        let op3 = SDWebImageDownloaderOptions.avoidDecodeImage
+//        let options = SDWebImageDownloaderOptions.init(rawValue: op1.rawValue | op2.rawValue | op3.rawValue)
+        let options = SDWebImageDownloaderOptions.init(rawValue: op1.rawValue | op2.rawValue)
         /*
          下载中图片的加载
          let source = CGImageSourceCreateIncremental(nil) // 创建一个空的图片源，随后在获得新数据时调用
